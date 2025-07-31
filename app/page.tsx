@@ -54,11 +54,13 @@ export default function Home() {
             <motion.div 
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              className="flex items-center space-x-2"
+              className="flex items-center space-x-3"
             >
-              <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
-                <Coffee className="w-6 h-6 text-white" />
-              </div>
+              <img 
+                src="/Kopikuys-logo.png" 
+                alt="Kopikuys Logo" 
+                className="h-10 w-auto object-contain"
+              />
               <span className="text-2xl font-serif font-bold text-primary">Kopikuys</span>
             </motion.div>
 
@@ -366,53 +368,45 @@ export default function Home() {
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                transition={{ duration: 0.2, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                whileHover={{ scale: 1.02 }}
-                className={`package-card rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 ${pkg.featured ? 'featured' : ''}`}
+                className={`package-card rounded-2xl p-6 shadow-lg ${pkg.featured ? 'featured' : ''}`}
               >
                 {pkg.featured && (
-                  <div className="bg-accent text-coffee-brown text-sm font-semibold px-3 py-1 rounded-full inline-block mb-4">
+                  <div className="absolute -top-2 -left-2 bg-accent text-coffee-brown text-sm font-semibold px-3 py-1 rounded-full z-10">
                     Most Popular
                   </div>
                 )}
-                <h3 className="text-xl font-serif font-bold text-coffee-brown mb-2">{pkg.name}</h3>
-                <div className="text-3xl font-bold text-primary mb-6">{pkg.price}</div>
                 
-                <div className="space-y-3 text-sm">
-                  <div className="flex justify-between">
+                <h3 className="text-xl font-serif font-bold text-coffee-brown mb-2 text-center">{pkg.name}</h3>
+                <div className="text-3xl font-bold text-primary mb-6 text-center">{pkg.price}</div>
+                
+                <div className="space-y-3 text-sm mb-6">
+                  <div className="flex justify-between items-center">
                     <span className="text-coffee-brown/70">Cups:</span>
                     <span className="font-semibold text-coffee-brown">{pkg.cups}</span>
                   </div>
-                  <div className="flex justify-between">
+                  <div className="flex justify-between items-center">
                     <span className="text-coffee-brown/70">Flavors:</span>
                     <span className="font-semibold text-coffee-brown">{pkg.flavors}</span>
                   </div>
-                  <div className="flex justify-between">
+                  <div className="flex justify-between items-center">
                     <span className="text-coffee-brown/70">Duration:</span>
                     <span className="font-semibold text-coffee-brown">{pkg.hours}</span>
                   </div>
-                  <div className="flex justify-between">
+                  <div className="flex justify-between items-center">
                     <span className="text-coffee-brown/70">Staff:</span>
                     <span className="font-semibold text-coffee-brown">{pkg.staff}</span>
                   </div>
-                  <div className="flex justify-between">
+                  <div className="flex justify-between items-center">
                     <span className="text-coffee-brown/70">Booth Setup:</span>
                     <span className="font-semibold text-coffee-brown">{pkg.booth}</span>
                   </div>
                 </div>
                 
-                <div className="mt-6 p-3 bg-primary/10 rounded-lg">
-                  <p className="text-sm text-primary font-semibold">{pkg.flavorOptions}</p>
-                </div>
-                
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="w-full mt-6 bg-primary text-white py-3 rounded-lg font-semibold hover:bg-primary-dark transition-colors"
-                >
+                <button className="w-full bg-primary text-white py-3 rounded-lg font-semibold hover:bg-primary-dark transition-colors">
                   Book Package
-                </motion.button>
+                </button>
               </motion.div>
             ))}
           </div>
@@ -425,6 +419,13 @@ export default function Home() {
             className="mt-16 text-center"
           >
             <div className="bg-cream/50 rounded-2xl p-8 max-w-4xl mx-auto">
+              <div className="flex justify-center mb-6">
+                <img 
+                  src="/Kopikuys-logo.png" 
+                  alt="Kopikuys Logo" 
+                  className="h-16 w-auto object-contain"
+                />
+              </div>
               <h3 className="text-2xl font-serif font-bold text-coffee-brown mb-4">
                 Available Flavor Series
               </h3>
@@ -640,10 +641,12 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-3 gap-8">
             <div>
-              <div className="flex items-center space-x-2 mb-4">
-                <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
-                  <Coffee className="w-5 h-5 text-white" />
-                </div>
+              <div className="flex items-center space-x-3 mb-4">
+                <img 
+                  src="/Kopikuys-logo.png" 
+                  alt="Kopikuys Logo" 
+                  className="h-8 w-auto object-contain"
+                />
                 <span className="text-xl font-serif font-bold">Kopikuys</span>
               </div>
               <p className="text-white/70">

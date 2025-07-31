@@ -102,15 +102,25 @@ html {
   background: linear-gradient(135deg, var(--primary), var(--secondary));
 }
 
-.package-card:hover::before {
-  background: linear-gradient(135deg, var(--secondary), var(--primary));
-}
-
 .package-card.featured {
-  transform: scale(1.05);
-  z-index: 10;
+  background: linear-gradient(135deg, var(--accent), var(--primary));
 }
 
-.package-card.featured::before {
-  background: linear-gradient(135deg, var(--accent), var(--primary));
+.package-card.featured h3,
+.package-card.featured .text-primary,
+.package-card.featured .text-coffee-brown {
+  color: white;
+}
+
+.package-card.featured .text-coffee-brown\/70 {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.package-card.featured button {
+  background: var(--coffee-brown) !important;
+  color: white !important;
+}
+
+.package-card.featured button:hover {
+  background: var(--primary-dark) !important;
 }
