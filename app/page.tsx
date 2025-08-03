@@ -7,9 +7,7 @@ import Packages from '../components/Packages';
 import Franchise from '../components/Franchise';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
-import LocationMap from '../components/LocationMap';
 import Branches from '../components/Branches';
-import { useState } from 'react';
 
 export default function Home() {
   const scrollToSection = (sectionId: string) => {

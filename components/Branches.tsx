@@ -192,7 +192,7 @@ export default function Branches() {
             Our Branches
           </h2>
           <p className="text-xl text-coffee-brown/70 max-w-3xl mx-auto">
-            Find your nearest Kopikuys branch across the Philippines. We're expanding to serve you better!
+            Find your nearest Kopikuys branch across the Philippines. We&apos;re expanding to serve you better!
           </p>
         </motion.div>
 
