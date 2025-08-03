@@ -73,6 +73,7 @@ export default function MenuCarousel() {
   // Touch gesture handlers
   const handleTouchStart = (e: React.TouchEvent) => {
     setTouchStart(e.targetTouches[0].clientX);
+    setTouchEnd(0); // Reset touch end
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
@@ -83,14 +84,14 @@ export default function MenuCarousel() {
     if (!touchStart || !touchEnd) return;
     
     const distance = touchStart - touchEnd;
-    const isLeftSwipe = distance > 50;
-    const isRightSwipe = distance < -50;
-
-    if (isLeftSwipe) {
-      nextDrink();
-    }
-    if (isRightSwipe) {
-      prevDrink();
+    const minSwipeDistance = 30; // Reduced for better responsiveness
+    
+    if (Math.abs(distance) > minSwipeDistance) {
+      if (distance > 0) {
+        nextDrink(); // Swipe left = next
+      } else {
+        prevDrink(); // Swipe right = previous
+      }
     }
 
     // Reset values
@@ -260,10 +261,32 @@ export default function MenuCarousel() {
 
         {/* Mobile Layout */}
         <div className="md:hidden">
+          {/* Mobile Series Tabs */}
+          <div className="mb-6">
+            <div className="flex flex-wrap gap-2 justify-center">
+              {menuData.map((series, index) => (
+                <button
+                  key={index}
+                  onClick={() => {
+                    setCurrentSeriesIndex(index);
+                    setCurrentDrinkIndex(0); // Reset to first drink when changing series
+                  }}
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                    currentSeriesIndex === index
+                      ? 'bg-primary text-cream shadow-md'
+                      : 'bg-coffee-brown/10 text-coffee-brown hover:bg-coffee-brown/20'
+                  }`}
+                >
+                  {series.series}
+                </button>
+              ))}
+            </div>
+          </div>
+
           {/* Mobile Drink Display */}
           <div 
             ref={carouselRef}
-            className="relative max-w-sm mx-auto mb-8"
+            className="relative max-w-sm mx-auto mb-6"
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
@@ -326,7 +349,7 @@ export default function MenuCarousel() {
           </div>
 
           {/* Mobile Drink Indicators */}
-          <div className="flex justify-center gap-2 mb-8">
+          <div className="flex justify-center gap-2 mb-4">
             {menuData[currentSeriesIndex].drinks.map((_, index) => (
               <button
                 key={index}
@@ -340,7 +363,7 @@ export default function MenuCarousel() {
           </div>
 
           {/* Mobile Series Info */}
-          <div className="text-center mb-8">
+          <div className="text-center">
             <p className="text-sm text-coffee-brown/70">
               {currentDrinkIndex + 1} of {menuData[currentSeriesIndex].drinks.length} in {menuData[currentSeriesIndex].series}
             </p>
