@@ -1,12 +1,15 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 export default function MenuCarousel() {
   const [currentSeriesIndex, setCurrentSeriesIndex] = useState(0);
   const [currentDrinkIndex, setCurrentDrinkIndex] = useState(0);
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
+  const carouselRef = useRef<HTMLDivElement>(null);
 
   // Menu data structure with image mappings
   const menuData = [
@@ -66,6 +69,34 @@ export default function MenuCarousel() {
       ]
     }
   ];
+
+  // Touch gesture handlers
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+
+    if (isLeftSwipe) {
+      nextDrink();
+    }
+    if (isRightSwipe) {
+      prevDrink();
+    }
+
+    // Reset values
+    setTouchStart(0);
+    setTouchEnd(0);
+  };
 
   const nextDrink = () => {
     const currentSeries = menuData[currentSeriesIndex];
@@ -230,22 +261,28 @@ export default function MenuCarousel() {
         {/* Mobile Layout */}
         <div className="md:hidden">
           {/* Mobile Drink Display */}
-          <div className="relative max-w-sm mx-auto mb-8">
+          <div 
+            ref={carouselRef}
+            className="relative max-w-sm mx-auto mb-8"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
             {/* Navigation Arrows */}
             <button
               onClick={prevDrink}
-              className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-coffee-brown/20 rounded-full flex items-center justify-center hover:bg-coffee-brown/30 transition-colors z-10"
+              className="absolute left-2 top-1/2 -translate-y-1/2 w-12 h-12 bg-coffee-brown/20 rounded-full flex items-center justify-center hover:bg-coffee-brown/30 active:bg-coffee-brown/40 transition-colors z-10 shadow-lg"
               aria-label="Previous drink"
             >
-              <ChevronLeft className="w-4 h-4 text-coffee-brown" />
+              <ChevronLeft className="w-6 h-6 text-coffee-brown" />
             </button>
             
             <button
               onClick={nextDrink}
-              className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-coffee-brown/20 rounded-full flex items-center justify-center hover:bg-coffee-brown/30 transition-colors z-10"
+              className="absolute right-2 top-1/2 -translate-y-1/2 w-12 h-12 bg-coffee-brown/20 rounded-full flex items-center justify-center hover:bg-coffee-brown/30 active:bg-coffee-brown/40 transition-colors z-10 shadow-lg"
               aria-label="Next drink"
             >
-              <ChevronRight className="w-4 h-4 text-coffee-brown" />
+              <ChevronRight className="w-6 h-6 text-coffee-brown" />
             </button>
 
             {/* Main Content */}
@@ -291,13 +328,22 @@ export default function MenuCarousel() {
           {/* Mobile Drink Indicators */}
           <div className="flex justify-center gap-2 mb-8">
             {menuData[currentSeriesIndex].drinks.map((_, index) => (
-              <div
+              <button
                 key={index}
-                className={`w-2 h-2 rounded-full transition-colors ${
+                onClick={() => setCurrentDrinkIndex(index)}
+                className={`w-3 h-3 rounded-full transition-colors ${
                   index === currentDrinkIndex ? 'bg-accent' : 'bg-coffee-brown/30'
                 }`}
+                aria-label={`Go to drink ${index + 1}`}
               />
             ))}
+          </div>
+
+          {/* Mobile Series Info */}
+          <div className="text-center mb-8">
+            <p className="text-sm text-coffee-brown/70">
+              {currentDrinkIndex + 1} of {menuData[currentSeriesIndex].drinks.length} in {menuData[currentSeriesIndex].series}
+            </p>
           </div>
         </div>
       </div>
