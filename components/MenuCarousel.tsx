@@ -83,8 +83,8 @@ export default function MenuCarousel() {
   };
 
   return (
-    <section id="menu" className="py-20 bg-gradient-to-br from-cream to-light-brown">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="menu" className="py-20 bg-gradient-to-br from-cream to-light-brown min-h-screen">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -100,7 +100,7 @@ export default function MenuCarousel() {
           </p>
         </motion.div>
 
-        <div className="flex flex-col lg:flex-row items-center gap-8">
+        <div className="flex flex-col lg:flex-row items-center gap-8 mb-16">
           {/* Left Series Navigation */}
           <div className="flex lg:flex-col gap-3 order-2 lg:order-1">
             {menuData.map((series, seriesIndex) => (
@@ -121,22 +121,22 @@ export default function MenuCarousel() {
 
                      {/* Center Display */}
            <div className="flex-1 flex items-center justify-center order-1 lg:order-2">
-             <div className="relative max-w-lg w-full">
+             <div className="relative max-w-xl w-full">
               {/* Navigation Arrows */}
               <button
                 onClick={prevDrink}
-                className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 rounded-full flex items-center justify-center shadow-lg hover:bg-white transition-colors z-10"
+                className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-coffee-brown/20 rounded-full flex items-center justify-center hover:bg-coffee-brown/30 transition-colors z-10"
                 aria-label="Previous drink"
               >
-                <ChevronLeft className="w-6 h-6 text-primary" />
+                <ChevronLeft className="w-6 h-6 text-coffee-brown" />
               </button>
               
               <button
                 onClick={nextDrink}
-                className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 rounded-full flex items-center justify-center shadow-lg hover:bg-white transition-colors z-10"
+                className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-coffee-brown/20 rounded-full flex items-center justify-center hover:bg-coffee-brown/30 transition-colors z-10"
                 aria-label="Next drink"
               >
-                <ChevronRight className="w-6 h-6 text-primary" />
+                <ChevronRight className="w-6 h-6 text-coffee-brown" />
               </button>
 
                              {/* Main Content */}
@@ -145,74 +145,66 @@ export default function MenuCarousel() {
                  initial={{ opacity: 0, x: 20 }}
                  animate={{ opacity: 1, x: 0 }}
                  transition={{ duration: 0.3 }}
-                                   className="bg-transparent rounded-2xl p-10 shadow-lg relative"
+                                   className="bg-transparent rounded-2xl p-10 relative"
                >
-                                   <div className="w-full h-80 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-xl mb-6 flex items-center justify-center overflow-hidden">
+                                   <div className="w-full aspect-[4/3] flex items-center justify-center overflow-hidden relative">
+                    {/* Platform/Coaster */}
+                    <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 w-48 h-4 bg-coffee-brown/30 rounded-full blur-sm"></div>
+                    
                     <img 
                       src={menuData[currentSeriesIndex].drinks[currentDrinkIndex].image} 
                       alt={menuData[currentSeriesIndex].drinks[currentDrinkIndex].name}
-                      className="w-full h-full object-contain rounded-xl"
+                      className="w-full h-full object-cover object-center relative z-10 scale-125"
                     />
                   </div>
                 
-                {/* Text Overlay */}
-                <div className="absolute top-8 right-8 text-right">
-                  <div className="text-4xl font-bold text-coffee-brown">
-                    {menuData[currentSeriesIndex].drinks[currentDrinkIndex].price.replace('₱', '')}
-                  </div>
-                  <div className="text-sm font-semibold text-coffee-brown uppercase tracking-wide">
-                    {menuData[currentSeriesIndex].drinks[currentDrinkIndex].name.split(' ')[0]}
-                  </div>
-                  <div className="text-sm font-semibold text-coffee-brown uppercase tracking-wide">
-                    {menuData[currentSeriesIndex].drinks[currentDrinkIndex].name.split(' ').slice(1).join(' ')}
-                  </div>
-                  <div className="text-xs text-coffee-brown/70 uppercase tracking-wider mt-1">
+                {/* Drink Information */}
+                <motion.div
+                  key={`${currentSeriesIndex}-${currentDrinkIndex}`}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="text-center mt-8"
+                >
+                  <h3 className="text-3xl font-serif font-bold text-coffee-brown mb-2">
+                    {menuData[currentSeriesIndex].drinks[currentDrinkIndex].name}
+                  </h3>
+                  <p className="text-2xl text-primary font-semibold mb-2">
+                    {menuData[currentSeriesIndex].drinks[currentDrinkIndex].price}
+                  </p>
+                  <p className="text-sm text-coffee-brown/70 uppercase tracking-wider">
                     {menuData[currentSeriesIndex].series}
-                  </div>
-                </div>
+                  </p>
+                </motion.div>
               </motion.div>
             </div>
           </div>
 
-                     {/* Right Preview */}
+                                {/* Right Preview */}
            <div className="flex lg:flex-col gap-2 order-3">
-             {[1, 2].map((offset) => {
+             {(() => {
                const currentSeries = menuData[currentSeriesIndex];
-               const nextIndex = (currentDrinkIndex + offset) % currentSeries.drinks.length;
-               return (
-                 <div
-                   key={offset}
-                                       className="w-16 h-20 lg:w-20 lg:h-24 bg-transparent rounded-lg shadow-sm overflow-hidden"
-                 >
-                                       <img 
-                      src={currentSeries.drinks[nextIndex].image} 
-                      alt={currentSeries.drinks[nextIndex].name}
-                      className="w-full h-full object-contain"
-                    />
-                 </div>
-               );
-             })}
+               const totalDrinks = currentSeries.drinks.length;
+               const previewCount = Math.min(totalDrinks - 1, 3); // Show up to 3 previews, but not more than available drinks
+               
+               return Array.from({ length: previewCount }, (_, index) => {
+                 const nextIndex = (currentDrinkIndex + index + 1) % totalDrinks;
+                 return (
+                   <div
+                     key={index}
+                     className="w-16 h-20 lg:w-20 lg:h-24 bg-transparent rounded-lg shadow-sm overflow-hidden"
+                   >
+                     <img 
+                       src={currentSeries.drinks[nextIndex].image} 
+                       alt={currentSeries.drinks[nextIndex].name}
+                       className="w-full h-full object-contain"
+                     />
+                   </div>
+                 );
+               });
+             })()}
            </div>
         </div>
-
-        {/* Current Drink Info */}
-        <motion.div
-          key={`${currentSeriesIndex}-${currentDrinkIndex}`}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3 }}
-          className="text-center mt-8"
-        >
-          <h3 className="text-2xl font-serif font-bold text-coffee-brown mb-2">
-            {menuData[currentSeriesIndex].drinks[currentDrinkIndex].name}
-          </h3>
-          <p className="text-lg text-primary font-semibold mb-2">
-            {menuData[currentSeriesIndex].drinks[currentDrinkIndex].price}
-          </p>
-          <p className="text-sm text-coffee-brown/70">
-            {menuData[currentSeriesIndex].series}
-          </p>
-        </motion.div>
       </div>
     </section>
   );

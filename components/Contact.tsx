@@ -14,7 +14,7 @@ export default function Contact() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-serif font-bold text-coffee-brown mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-coffee-brown mb-4">
             Get In Touch
           </h2>
           <p className="text-xl text-coffee-brown/70 max-w-3xl mx-auto">
@@ -31,7 +31,7 @@ export default function Contact() {
             className="space-y-8"
           >
             <div className="space-y-6">
-              <h3 className="text-2xl font-serif font-bold text-coffee-brown">Contact Information</h3>
+              <h3 className="text-2xl font-bold text-coffee-brown">Contact Information</h3>
               <div className="space-y-4">
                 <div className="flex items-center space-x-4">
                   <Phone className="w-6 h-6 text-primary" />
@@ -64,35 +64,35 @@ export default function Contact() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="bg-cream/50 rounded-2xl p-8"
+            className="bg-cream/50 rounded-2xl p-8 border border-coffee-brown/20"
           >
-            <h3 className="text-2xl font-serif font-bold text-coffee-brown mb-6">Send us a Message</h3>
+            <h3 className="text-2xl font-bold text-coffee-brown mb-6">Send us a Message</h3>
             <form className="space-y-4">
               <div>
                 <input
                   type="text"
                   placeholder="Your Name"
-                  className="w-full px-4 py-3 rounded-lg border border-primary/20 focus:border-primary focus:outline-none transition-colors"
+                  className="w-full px-4 py-3 rounded-lg border border-coffee-brown/30 focus:border-primary focus:outline-none transition-colors bg-white text-coffee-brown placeholder-coffee-brown/50"
                 />
               </div>
               <div>
                 <input
                   type="email"
                   placeholder="Your Email"
-                  className="w-full px-4 py-3 rounded-lg border border-primary/20 focus:border-primary focus:outline-none transition-colors"
+                  className="w-full px-4 py-3 rounded-lg border border-coffee-brown/30 focus:border-primary focus:outline-none transition-colors bg-white text-coffee-brown placeholder-coffee-brown/50"
                 />
               </div>
               <div>
                 <textarea
                   placeholder="Your Message"
                   rows={4}
-                  className="w-full px-4 py-3 rounded-lg border border-primary/20 focus:border-primary focus:outline-none transition-colors resize-none"
+                  className="w-full px-4 py-3 rounded-lg border border-coffee-brown/30 focus:border-primary focus:outline-none transition-colors resize-none bg-white text-coffee-brown placeholder-coffee-brown/50"
                 ></textarea>
               </div>
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-dark transition-colors"
+                className="w-full bg-primary text-cream px-6 py-3 rounded-lg font-semibold hover:bg-primary-dark transition-colors"
               >
                 Send Message
               </motion.button>

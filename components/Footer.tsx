@@ -41,7 +41,7 @@ export default function Footer({ scrollToSection }: FooterProps) {
           </div>
         </div>
         <div className="border-t border-white/20 mt-8 pt-8 text-center text-white/70">
-          <p>&copy; 2024 Kopikuys. All rights reserved.</p>
+          <p>&copy; 2025 Kopikuys. All rights reserved.</p>
         </div>
       </div>
     </footer>

@@ -23,7 +23,7 @@
   --color-coffee-brown: var(--coffee-brown);
   --color-light-brown: var(--light-brown);
   --font-sans: var(--font-inter);
-  --font-serif: 'Bodrum Soft 14 Regular', serif;
+  --font-serif: 'Playfair Display', 'Georgia', serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -87,19 +87,6 @@ html {
   border: 2px solid transparent;
   background-clip: padding-box;
   position: relative;
-}
-
-.package-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: -1;
-  margin: -2px;
-  border-radius: inherit;
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
 }
 
 .package-card.featured {

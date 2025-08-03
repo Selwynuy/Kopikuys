@@ -12,8 +12,8 @@ export default function Navigation({ scrollToSection }: NavigationProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { scrollY } = useScroll();
-  const y = useTransform(scrollY, [0, 100], [0, -50]);
-  const opacity = useTransform(scrollY, [0, 100], [1, 0.8]);
+  const y = useTransform(scrollY, [0, 100], [0, -100]);
+  const opacity = useTransform(scrollY, [0, 100], [1, 0]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -48,23 +48,47 @@ export default function Navigation({ scrollToSection }: NavigationProps) {
               alt="Kopikuys Logo" 
               className="h-10 w-auto object-contain"
             />
-            <span className="text-2xl font-serif font-bold text-primary">Kopikuys</span>
+            <span className={`text-2xl font-serif font-bold ${isScrolled ? 'text-primary' : 'text-coffee-brown drop-shadow-sm'}`}>Kopikuys</span>
           </motion.div>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
-            <button onClick={() => handleNavClick('home')} className="text-primary hover:text-primary-dark transition-colors">Home</button>
-            <button onClick={() => handleNavClick('about')} className="text-primary hover:text-primary-dark transition-colors">About</button>
-            <button onClick={() => handleNavClick('menu')} className="text-primary hover:text-primary-dark transition-colors">Menu</button>
-            <button onClick={() => handleNavClick('packages')} className="text-primary hover:text-primary-dark transition-colors">Packages</button>
-            <button onClick={() => handleNavClick('franchise')} className="text-primary hover:text-primary-dark transition-colors">Franchise</button>
-            <button onClick={() => handleNavClick('contact')} className="text-primary hover:text-primary-dark transition-colors">Contact</button>
+            <button 
+              onClick={() => handleNavClick('home')} 
+              className={`transition-colors ${isScrolled ? 'text-primary hover:text-primary-dark' : 'text-coffee-brown hover:text-secondary drop-shadow-sm'}`}
+            >
+              Home
+            </button>
+            <button 
+              onClick={() => handleNavClick('menu')} 
+              className={`transition-colors ${isScrolled ? 'text-primary hover:text-primary-dark' : 'text-coffee-brown hover:text-secondary drop-shadow-sm'}`}
+            >
+              Menu
+            </button>
+            <button 
+              onClick={() => handleNavClick('packages')} 
+              className={`transition-colors ${isScrolled ? 'text-primary hover:text-primary-dark' : 'text-coffee-brown hover:text-secondary drop-shadow-sm'}`}
+            >
+              Packages
+            </button>
+            <button 
+              onClick={() => handleNavClick('franchise')} 
+              className={`transition-colors ${isScrolled ? 'text-primary hover:text-primary-dark' : 'text-coffee-brown hover:text-secondary drop-shadow-sm'}`}
+            >
+              Franchise
+            </button>
+            <button 
+              onClick={() => handleNavClick('contact')} 
+              className={`transition-colors ${isScrolled ? 'text-primary hover:text-primary-dark' : 'text-coffee-brown hover:text-secondary drop-shadow-sm'}`}
+            >
+              Contact
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden text-primary"
+            className={`md:hidden ${isScrolled ? 'text-primary' : 'text-coffee-brown drop-shadow-sm'}`}
           >
             {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
