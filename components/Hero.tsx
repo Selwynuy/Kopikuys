@@ -10,7 +10,7 @@ interface HeroProps {
 
 export default function Hero({ scrollToSection }: HeroProps) {
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-cream via-light-brown to-accent pt-16">
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-cream via-light-brown to-accent pt-16 md:pt-20">
       {/* Background Elements */}
       <div className="absolute inset-0 bg-primary/10"></div>
       

@@ -12,7 +12,6 @@ export default function Navigation({ scrollToSection }: NavigationProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { scrollY } = useScroll();
-  const y = useTransform(scrollY, [0, 100], [0, -100]);
   const opacity = useTransform(scrollY, [0, 100], [1, 0]);
 
   useEffect(() => {
@@ -56,8 +55,8 @@ export default function Navigation({ scrollToSection }: NavigationProps) {
 
   return (
     <motion.nav 
-      style={{ y, opacity }}
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+      style={{ opacity }}
+      className={`fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300 ${
         isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
       }`}
     >
