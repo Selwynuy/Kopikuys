@@ -133,24 +133,7 @@ export default function MenuCarousel() {
           </p>
         </motion.div>
 
-        {/* Mobile Series Selector */}
-        <div className="md:hidden mb-8">
-          <div className="flex gap-2 overflow-x-auto pb-4 px-4 -mx-4">
-            {menuData.map((series, seriesIndex) => (
-              <button
-                key={seriesIndex}
-                onClick={() => goToSeries(seriesIndex)}
-                className={`flex-shrink-0 px-4 py-2 rounded-full transition-all duration-200 text-sm font-medium ${
-                  seriesIndex === currentSeriesIndex 
-                    ? 'bg-accent text-coffee-brown shadow-md' 
-                    : 'bg-white/60 text-coffee-brown/70 hover:bg-white/80'
-                }`}
-              >
-                {series.series.split(' ')[0]}
-              </button>
-            ))}
-          </div>
-        </div>
+
 
         {/* Desktop Layout */}
         <div className="hidden md:flex flex-col lg:flex-row items-center gap-8 mb-16">
@@ -291,22 +274,6 @@ export default function MenuCarousel() {
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
           >
-            {/* Navigation Arrows */}
-            <button
-              onClick={prevDrink}
-              className="absolute left-2 top-1/2 -translate-y-1/2 w-12 h-12 bg-coffee-brown/20 rounded-full flex items-center justify-center hover:bg-coffee-brown/30 active:bg-coffee-brown/40 transition-colors z-10 shadow-lg"
-              aria-label="Previous drink"
-            >
-              <ChevronLeft className="w-6 h-6 text-coffee-brown" />
-            </button>
-            
-            <button
-              onClick={nextDrink}
-              className="absolute right-2 top-1/2 -translate-y-1/2 w-12 h-12 bg-coffee-brown/20 rounded-full flex items-center justify-center hover:bg-coffee-brown/30 active:bg-coffee-brown/40 transition-colors z-10 shadow-lg"
-              aria-label="Next drink"
-            >
-              <ChevronRight className="w-6 h-6 text-coffee-brown" />
-            </button>
 
             {/* Main Content */}
             <motion.div
