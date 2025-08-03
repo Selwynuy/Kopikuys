@@ -60,21 +60,21 @@ export default function Navigation({ scrollToSection }: NavigationProps) {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16 md:h-20">
+        <div className="flex justify-between items-center h-12 md:h-16">
           {/* Logo */}
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             className="flex items-center space-x-2 md:space-x-3"
           >
-            <img 
-              src="/Kopikuys-logo.png" 
-              alt="Kopikuys Logo" 
-              className="h-8 w-auto md:h-10 object-contain"
-            />
-            <span className={`text-xl md:text-2xl font-serif font-bold drop-shadow-sm ${
-              isScrolled ? 'text-coffee-brown' : 'text-coffee-brown'
-            }`}>
+                         <img 
+               src="/Kopikuys-logo.png" 
+               alt="Kopikuys Logo" 
+               className="h-6 w-auto md:h-8 object-contain"
+             />
+                         <span className={`text-lg md:text-xl font-serif font-bold drop-shadow-sm ${
+               isScrolled ? 'text-coffee-brown' : 'text-coffee-brown'
+             }`}>
               Kopikuys
             </span>
           </motion.div>
@@ -83,7 +83,7 @@ export default function Navigation({ scrollToSection }: NavigationProps) {
           <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
             <button 
               onClick={() => handleNavClick('home')} 
-              className={`transition-colors text-sm lg:text-base font-medium drop-shadow-sm ${
+              className={`transition-colors text-xs lg:text-sm font-medium drop-shadow-sm ${
                 isScrolled 
                   ? 'text-coffee-brown hover:text-primary' 
                   : 'text-coffee-brown hover:text-secondary'
@@ -93,7 +93,7 @@ export default function Navigation({ scrollToSection }: NavigationProps) {
             </button>
             <button 
               onClick={() => handleNavClick('menu')} 
-              className={`transition-colors text-sm lg:text-base font-medium drop-shadow-sm ${
+              className={`transition-colors text-xs lg:text-sm font-medium drop-shadow-sm ${
                 isScrolled 
                   ? 'text-coffee-brown hover:text-primary' 
                   : 'text-coffee-brown hover:text-secondary'
@@ -103,7 +103,7 @@ export default function Navigation({ scrollToSection }: NavigationProps) {
             </button>
             <button 
               onClick={() => handleNavClick('packages')} 
-              className={`transition-colors text-sm lg:text-base font-medium drop-shadow-sm ${
+              className={`transition-colors text-xs lg:text-sm font-medium drop-shadow-sm ${
                 isScrolled 
                   ? 'text-coffee-brown hover:text-primary' 
                   : 'text-coffee-brown hover:text-secondary'
@@ -113,7 +113,7 @@ export default function Navigation({ scrollToSection }: NavigationProps) {
             </button>
             <button 
               onClick={() => handleNavClick('franchise')} 
-              className={`transition-colors text-sm lg:text-base font-medium drop-shadow-sm ${
+              className={`transition-colors text-xs lg:text-sm font-medium drop-shadow-sm ${
                 isScrolled 
                   ? 'text-coffee-brown hover:text-primary' 
                   : 'text-coffee-brown hover:text-secondary'
@@ -123,7 +123,7 @@ export default function Navigation({ scrollToSection }: NavigationProps) {
             </button>
             <button 
               onClick={() => handleNavClick('contact')} 
-              className={`transition-colors text-sm lg:text-base font-medium drop-shadow-sm ${
+              className={`transition-colors text-xs lg:text-sm font-medium drop-shadow-sm ${
                 isScrolled 
                   ? 'text-coffee-brown hover:text-primary' 
                   : 'text-coffee-brown hover:text-primary'
@@ -143,7 +143,7 @@ export default function Navigation({ scrollToSection }: NavigationProps) {
             }`}
             aria-label="Toggle menu"
           >
-            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
       </div>
