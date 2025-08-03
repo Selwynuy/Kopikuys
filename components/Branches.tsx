@@ -179,41 +179,63 @@ export default function Branches() {
   ];
 
   return (
-    <section id="branches" className="py-20 bg-gradient-to-br from-cream to-light-brown">
+    <section id="branches" className="py-12 md:py-20 bg-gradient-to-br from-cream to-light-brown">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-8 md:mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-coffee-brown mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-coffee-brown mb-4">
             Our Branches
           </h2>
-          <p className="text-xl text-coffee-brown/70 max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-coffee-brown/70 max-w-3xl mx-auto px-4">
             Find your nearest Kopikuys branch across the Philippines. We&apos;re expanding to serve you better!
           </p>
         </motion.div>
 
+        {/* Branch Count Summary */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center mb-8 md:mb-12"
+        >
+          <div className="bg-white/60 rounded-2xl p-6 md:p-8 shadow-lg border border-coffee-brown/10 max-w-md mx-auto">
+            <p className="text-lg md:text-xl text-coffee-brown/80 mb-2">
+              Currently serving
+            </p>
+            <p className="text-3xl md:text-4xl font-bold text-primary mb-2">
+              {branches.length} locations
+            </p>
+            <p className="text-base md:text-lg text-coffee-brown/70">
+              across the Philippines
+            </p>
+          </div>
+        </motion.div>
+
         {/* Branches Grid */}
-        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
           {branches.map((branch, index) => (
             <motion.div
               key={branch.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: index * 0.03 }}
+              transition={{ duration: 0.4, delay: index * 0.02 }}
               viewport={{ once: true }}
-              className="group bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-coffee-brown/10 hover:border-coffee-brown/30 hover:-translate-y-1"
+              className="group bg-white rounded-xl p-4 md:p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-coffee-brown/10 hover:border-coffee-brown/30 hover:-translate-y-1"
             >
               {/* Header */}
               <div className="flex items-start gap-3 mb-4">
-                <div className="p-2 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors">
-                  <Coffee className="w-5 h-5 text-primary" />
+                <div className="p-2 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors flex-shrink-0">
+                  <Coffee className="w-4 h-4 md:w-5 md:h-5 text-primary" />
                 </div>
-                <div className="flex-1">
-                  <h3 className="text-lg font-bold text-coffee-brown mb-1 group-hover:text-primary transition-colors">
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-base md:text-lg font-bold text-coffee-brown mb-1 group-hover:text-primary transition-colors truncate">
                     {branch.name}
                   </h3>
                   <span className="text-xs bg-accent/20 text-coffee-brown px-2 py-1 rounded-full font-medium">
@@ -226,12 +248,12 @@ export default function Branches() {
               <div className="space-y-3">
                 <div className="flex items-start gap-3">
                   <MapPin className="w-4 h-4 text-coffee-brown/60 mt-0.5 flex-shrink-0" />
-                  <p className="text-sm text-coffee-brown/80 leading-relaxed">{branch.address}</p>
+                  <p className="text-sm text-coffee-brown/80 leading-relaxed line-clamp-2">{branch.address}</p>
                 </div>
                 
                 <div className="flex items-center gap-3">
                   <Phone className="w-4 h-4 text-coffee-brown/60 flex-shrink-0" />
-                  <p className="text-sm text-coffee-brown/80 font-medium">{branch.phone}</p>
+                  <p className="text-sm text-coffee-brown/80 font-medium truncate">{branch.phone}</p>
                 </div>
                 
                 <div className="flex items-center gap-3">
@@ -243,24 +265,24 @@ export default function Branches() {
           ))}
         </div>
 
-        {/* Branch Count */}
+        {/* Call to Action */}
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mt-16"
+          className="text-center mt-12 md:mt-16"
         >
-          <div className="bg-white/60 rounded-2xl p-8 shadow-lg border border-coffee-brown/10">
-            <p className="text-xl text-coffee-brown/80 mb-2">
-              Currently serving
+          <div className="bg-white/60 rounded-2xl p-6 md:p-8 shadow-lg border border-coffee-brown/10 max-w-2xl mx-auto">
+            <h3 className="text-xl md:text-2xl font-bold text-coffee-brown mb-3">
+              Can&apos;t find a branch near you?
+            </h3>
+            <p className="text-base md:text-lg text-coffee-brown/70 mb-6">
+              We&apos;re constantly expanding! Contact us to suggest a new location or inquire about franchising opportunities.
             </p>
-            <p className="text-4xl font-bold text-primary mb-2">
-              {branches.length} locations
-            </p>
-            <p className="text-lg text-coffee-brown/70">
-              across the Philippines
-            </p>
+            <button className="bg-primary text-cream px-6 py-3 rounded-full text-base font-semibold hover:bg-primary-dark transition-colors">
+              Contact Us
+            </button>
           </div>
         </motion.div>
       </div>
