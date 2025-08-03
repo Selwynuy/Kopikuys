@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 
 interface NavigationProps {
@@ -11,8 +11,6 @@ interface NavigationProps {
 export default function Navigation({ scrollToSection }: NavigationProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const { scrollY } = useScroll();
-  const opacity = useTransform(scrollY, [0, 100], [1, 0]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -54,8 +52,7 @@ export default function Navigation({ scrollToSection }: NavigationProps) {
   };
 
   return (
-    <motion.nav 
-      style={{ opacity }}
+    <nav 
       className={`fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300 ${
         isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
       }`}
@@ -216,6 +213,6 @@ export default function Navigation({ scrollToSection }: NavigationProps) {
           </div>
         </div>
       </motion.div>
-    </motion.nav>
+    </nav>
   );
 } 
