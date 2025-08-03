@@ -10,6 +10,15 @@ interface NavigationProps {
 
 export default function Navigation({ scrollToSection }: NavigationProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   // Close mobile menu when clicking outside
   useEffect(() => {
@@ -44,7 +53,11 @@ export default function Navigation({ scrollToSection }: NavigationProps) {
 
   return (
     <nav 
-      className="fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300 bg-transparent"
+      className={`fixed top-0 left-0 right-0 w-full z-50 transition-all duration-500 ${
+        isScrolled 
+          ? 'bg-white/20 backdrop-blur-md shadow-lg border-b border-white/20' 
+          : 'bg-transparent'
+      }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 md:h-20">
@@ -59,7 +72,9 @@ export default function Navigation({ scrollToSection }: NavigationProps) {
               alt="Kopikuys Logo" 
               className="h-8 w-auto md:h-10 object-contain"
             />
-            <span className="text-xl md:text-2xl font-serif font-bold text-coffee-brown drop-shadow-sm">
+            <span className={`text-xl md:text-2xl font-serif font-bold drop-shadow-sm ${
+              isScrolled ? 'text-coffee-brown' : 'text-coffee-brown'
+            }`}>
               Kopikuys
             </span>
           </motion.div>
@@ -68,31 +83,51 @@ export default function Navigation({ scrollToSection }: NavigationProps) {
           <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
             <button 
               onClick={() => handleNavClick('home')} 
-              className="transition-colors text-sm lg:text-base font-medium text-coffee-brown hover:text-secondary drop-shadow-sm"
+              className={`transition-colors text-sm lg:text-base font-medium drop-shadow-sm ${
+                isScrolled 
+                  ? 'text-coffee-brown hover:text-primary' 
+                  : 'text-coffee-brown hover:text-secondary'
+              }`}
             >
               Home
             </button>
             <button 
               onClick={() => handleNavClick('menu')} 
-              className="transition-colors text-sm lg:text-base font-medium text-coffee-brown hover:text-secondary drop-shadow-sm"
+              className={`transition-colors text-sm lg:text-base font-medium drop-shadow-sm ${
+                isScrolled 
+                  ? 'text-coffee-brown hover:text-primary' 
+                  : 'text-coffee-brown hover:text-secondary'
+              }`}
             >
               Menu
             </button>
             <button 
               onClick={() => handleNavClick('packages')} 
-              className="transition-colors text-sm lg:text-base font-medium text-coffee-brown hover:text-secondary drop-shadow-sm"
+              className={`transition-colors text-sm lg:text-base font-medium drop-shadow-sm ${
+                isScrolled 
+                  ? 'text-coffee-brown hover:text-primary' 
+                  : 'text-coffee-brown hover:text-secondary'
+              }`}
             >
               Packages
             </button>
             <button 
               onClick={() => handleNavClick('franchise')} 
-              className="transition-colors text-sm lg:text-base font-medium text-coffee-brown hover:text-secondary drop-shadow-sm"
+              className={`transition-colors text-sm lg:text-base font-medium drop-shadow-sm ${
+                isScrolled 
+                  ? 'text-coffee-brown hover:text-primary' 
+                  : 'text-coffee-brown hover:text-secondary'
+              }`}
             >
               Franchise
             </button>
             <button 
               onClick={() => handleNavClick('contact')} 
-              className="transition-colors text-sm lg:text-base font-medium text-coffee-brown hover:text-secondary drop-shadow-sm"
+              className={`transition-colors text-sm lg:text-base font-medium drop-shadow-sm ${
+                isScrolled 
+                  ? 'text-coffee-brown hover:text-primary' 
+                  : 'text-coffee-brown hover:text-primary'
+              }`}
             >
               Contact
             </button>
@@ -101,7 +136,11 @@ export default function Navigation({ scrollToSection }: NavigationProps) {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden menu-button p-2 rounded-lg transition-colors text-coffee-brown hover:bg-coffee-brown/10 drop-shadow-sm"
+            className={`md:hidden menu-button p-2 rounded-lg transition-colors drop-shadow-sm ${
+              isScrolled 
+                ? 'text-coffee-brown hover:bg-white/20' 
+                : 'text-coffee-brown hover:bg-coffee-brown/10'
+            }`}
             aria-label="Toggle menu"
           >
             {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
