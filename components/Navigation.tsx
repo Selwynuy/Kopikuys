@@ -164,9 +164,20 @@ export default function Navigation({ scrollToSection }: NavigationProps) {
         initial={{ opacity: 0, x: '100%' }}
         animate={{ opacity: isMenuOpen ? 1 : 0, x: isMenuOpen ? 0 : '100%' }}
         transition={{ duration: 0.3, ease: 'easeInOut' }}
-        className={`md:hidden mobile-menu fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-white shadow-2xl z-50 transform transition-transform duration-300 ${
-          isMenuOpen ? 'translate-x-0' : 'translate-x-full'
-        }`}
+        style={{ 
+          position: 'fixed',
+          top: 0,
+          right: 0,
+          height: '100vh',
+          width: '320px',
+          maxWidth: '85vw',
+          backgroundColor: 'white',
+          boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+          zIndex: 9999,
+          transform: isMenuOpen ? 'translateX(0)' : 'translateX(100%)',
+          transition: 'transform 0.3s ease-in-out'
+        }}
+        className={`md:hidden mobile-menu`}
       >
         <div className="flex flex-col h-full">
           {/* Mobile Menu Header */}
