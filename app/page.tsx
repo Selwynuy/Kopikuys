@@ -18,7 +18,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-cream via-white to-light-brown">
+    <div className="min-h-screen bg-gradient-to-br from-cream via-white to-light-brown overflow-x-hidden">
       <Navigation scrollToSection={scrollToSection} />
       <Hero scrollToSection={scrollToSection} />
       <MenuCarousel />
