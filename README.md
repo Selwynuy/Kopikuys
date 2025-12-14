@@ -1,36 +1,107 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Kopikuys - Coffee Franchise Website
 
-## Getting Started
+A modern, responsive website for Kopikuys, a premium coffee franchise brand in the Philippines. Built with Next.js 15, featuring smooth animations, interactive menu displays, and comprehensive franchise information.
 
-First, run the development server:
+## 🚀 Features
+
+### Core Sections
+- **Hero Section** - Animated landing page with premium coffee imagery and call-to-action
+- **Menu Carousel** - Interactive drink showcase with 7 signature series:
+  - Coffee Series
+  - Milky Series
+  - Choco-ey Series
+  - Rookie Series
+  - Fusion Sensation Series
+  - Hot Gold Series
+  - Back to Black Series
+- **Packages** - Product package offerings
+- **Branches** - Location finder with 20+ branches across Luzon and Visayas
+- **Franchise** - Comprehensive franchise information including:
+  - ₱88,888 franchise package details
+  - Benefits and support systems
+  - Success statistics
+- **Contact** - Customer inquiry form
+- **Footer** - Navigation and company information
+
+### Technical Features
+- **Responsive Design** - Optimized for mobile, tablet, and desktop
+- **Smooth Animations** - Powered by Framer Motion for engaging user experience
+- **Touch Gestures** - Swipe navigation for mobile menu carousel
+- **Modern UI** - Coffee-themed gradient design with Tailwind CSS
+- **Performance Optimized** - Next.js 15 with App Router and Image optimization
+
+## 🛠️ Tech Stack
+
+- **Framework**: Next.js 15.4.5
+- **React**: 19.1.0
+- **Styling**: Tailwind CSS 4
+- **Animations**: Framer Motion 12.23.12
+- **Icons**: Lucide React
+- **Language**: TypeScript 5
+- **Linting**: ESLint with Next.js config
+
+## 📦 Installation
 
 ```bash
+# Install dependencies
+npm install
+
+# Run development server
+npx next dev
+# or fix the typo in package.json and use:
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the site.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🏗️ Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+kopikuys/
+├── app/                    # Next.js App Router
+│   ├── page.tsx           # Main page component
+│   ├── layout.tsx         # Root layout
+│   └── globals.css        # Global styles
+├── components/            # React components
+│   ├── Navigation.tsx     # Header navigation
+│   ├── Hero.tsx           # Landing hero section
+│   ├── MenuCarousel.tsx   # Interactive menu display
+│   ├── Packages.tsx       # Product packages
+│   ├── Branches.tsx       # Location finder
+│   ├── Franchise.tsx      # Franchise information
+│   ├── Contact.tsx        # Contact form
+│   ├── Footer.tsx         # Footer component
+│   └── About.tsx          # About section
+└── public/                # Static assets
+    ├── Coffee/           # Coffee product images
+    └── Series/           # Series category images
+```
 
-## Learn More
+## 🎨 Design Highlights
 
-To learn more about Next.js, take a look at the following resources:
+- Coffee-themed color palette with warm gradients
+- Animated coffee bean elements
+- Smooth scroll navigation between sections
+- Interactive menu carousel with series selection
+- Branch location cards with regional filtering
+- Professional franchise presentation
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📝 Scripts
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `npm run dev` - Start development server (note: fix typo in package.json first)
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
 
-## Deploy on Vercel
+## 🌐 Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The project is ready to deploy on Vercel or any platform supporting Next.js:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run build
+npm run start
+```
+
+## 📄 License
+
+Private project - All rights reserved
